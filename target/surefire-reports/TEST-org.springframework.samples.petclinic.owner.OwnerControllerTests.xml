@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="org.springframework.samples.petclinic.owner.OwnerControllerTests" time="1.415" tests="11" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="org.nati.grade.owner.OwnerControllerTests" time="1.415" tests="11" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="gnome"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -59,15 +59,15 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="testProcessUpdateOwnerFormHasErrors" classname="org.springframework.samples.petclinic.owner.OwnerControllerTests" time="0.19"/>
-  <testcase name="testProcessCreationFormSuccess" classname="org.springframework.samples.petclinic.owner.OwnerControllerTests" time="0.009"/>
-  <testcase name="testInitFindForm" classname="org.springframework.samples.petclinic.owner.OwnerControllerTests" time="0.036"/>
-  <testcase name="testShowOwner" classname="org.springframework.samples.petclinic.owner.OwnerControllerTests" time="0.113"/>
-  <testcase name="testInitUpdateOwnerForm" classname="org.springframework.samples.petclinic.owner.OwnerControllerTests" time="0.052"/>
-  <testcase name="testInitCreationForm" classname="org.springframework.samples.petclinic.owner.OwnerControllerTests" time="0.03"/>
-  <testcase name="testProcessFindFormByLastName" classname="org.springframework.samples.petclinic.owner.OwnerControllerTests" time="0.007"/>
-  <testcase name="testProcessFindFormNoOwnersFound" classname="org.springframework.samples.petclinic.owner.OwnerControllerTests" time="0.022"/>
-  <testcase name="testProcessFindFormSuccess" classname="org.springframework.samples.petclinic.owner.OwnerControllerTests" time="0.035"/>
-  <testcase name="testProcessUpdateOwnerFormSuccess" classname="org.springframework.samples.petclinic.owner.OwnerControllerTests" time="0.008"/>
-  <testcase name="testProcessCreationFormHasErrors" classname="org.springframework.samples.petclinic.owner.OwnerControllerTests" time="0.033"/>
+  <testcase name="testProcessUpdateOwnerFormHasErrors" classname="org.nati.grade.owner.OwnerControllerTests" time="0.19"/>
+  <testcase name="testProcessCreationFormSuccess" classname="org.nati.grade.owner.OwnerControllerTests" time="0.009"/>
+  <testcase name="testInitFindForm" classname="org.nati.grade.owner.OwnerControllerTests" time="0.036"/>
+  <testcase name="testShowOwner" classname="org.nati.grade.owner.OwnerControllerTests" time="0.113"/>
+  <testcase name="testInitUpdateOwnerForm" classname="org.nati.grade.owner.OwnerControllerTests" time="0.052"/>
+  <testcase name="testInitCreationForm" classname="org.nati.grade.owner.OwnerControllerTests" time="0.03"/>
+  <testcase name="testProcessFindFormByLastName" classname="org.nati.grade.owner.OwnerControllerTests" time="0.007"/>
+  <testcase name="testProcessFindFormNoOwnersFound" classname="org.nati.grade.owner.OwnerControllerTests" time="0.022"/>
+  <testcase name="testProcessFindFormSuccess" classname="org.nati.grade.owner.OwnerControllerTests" time="0.035"/>
+  <testcase name="testProcessUpdateOwnerFormSuccess" classname="org.nati.grade.owner.OwnerControllerTests" time="0.008"/>
+  <testcase name="testProcessCreationFormHasErrors" classname="org.nati.grade.owner.OwnerControllerTests" time="0.033"/>
 </testsuite>

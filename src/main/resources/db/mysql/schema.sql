@@ -1,65 +1,52 @@
-CREATE DATABASE IF NOT EXISTS petclinic;
+CREATE DATABASE IF NOT EXISTS nati;
 
-ALTER DATABASE petclinic
+ALTER DATABASE nati
   DEFAULT CHARACTER SET utf8
   DEFAULT COLLATE utf8_general_ci;
 
-GRANT ALL PRIVILEGES ON petclinic.* TO pc@localhost IDENTIFIED BY 'pc';
+GRANT ALL PRIVILEGES ON nati.* TO pc@localhost IDENTIFIED BY 'pc';
 
-USE petclinic;
+USE nati;
 
-CREATE TABLE IF NOT EXISTS vets (
-  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  first_name VARCHAR(30),
-  last_name VARCHAR(30),
-  INDEX(last_name)
-) engine=InnoDB;
-
-CREATE TABLE IF NOT EXISTS specialties (
-  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(80),
-  INDEX(name)
-) engine=InnoDB;
-
-CREATE TABLE IF NOT EXISTS vet_specialties (
-  vet_id INT(4) UNSIGNED NOT NULL,
-  specialty_id INT(4) UNSIGNED NOT NULL,
-  FOREIGN KEY (vet_id) REFERENCES vets(id),
-  FOREIGN KEY (specialty_id) REFERENCES specialties(id),
-  UNIQUE (vet_id,specialty_id)
-) engine=InnoDB;
-
-CREATE TABLE IF NOT EXISTS types (
-  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(80),
-  INDEX(name)
-) engine=InnoDB;
-
-CREATE TABLE IF NOT EXISTS owners (
-  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  first_name VARCHAR(30),
-  last_name VARCHAR(30),
-  address VARCHAR(255),
-  city VARCHAR(80),
-  telephone VARCHAR(20),
-  INDEX(last_name)
-) engine=InnoDB;
-
-CREATE TABLE IF NOT EXISTS pets (
+CREATE TABLE IF NOT EXISTS subjects (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(30),
-  birth_date DATE,
-  type_id INT(4) UNSIGNED NOT NULL,
-  owner_id INT(4) UNSIGNED NOT NULL,
-  INDEX(name),
-  FOREIGN KEY (owner_id) REFERENCES owners(id),
-  FOREIGN KEY (type_id) REFERENCES types(id)
+  total_credits INT(4) UNSIGNED NOT NULL,
+  INDEX (name)
 ) engine=InnoDB;
 
-CREATE TABLE IF NOT EXISTS visits (
+CREATE TABLE IF NOT EXISTS courses (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  pet_id INT(4) UNSIGNED NOT NULL,
-  visit_date DATE,
-  description VARCHAR(255),
-  FOREIGN KEY (pet_id) REFERENCES pets(id)
+  name VARCHAR(30),
+  total_credits INT(4) UNSIGNED NOT NULL,
+  INDEX (id)
 ) engine=InnoDB;
+
+CREATE TABLE IF NOT EXISTS semesters (
+  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id_course INT(4) UNSIGNED NOT NULL,
+  number INT(4) UNSIGNED NOT NULL,
+  total_credits INT(4) UNSIGNED NOT NULL, 
+  FOREIGN KEY (id_course) REFERENCES courses(id),
+  UNIQUE(id_course)
+) engine=InnoDB;
+
+CREATE TABLE IF NOT EXISTS semester_subject (
+  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id_subject INT(4) UNSIGNED NOT NULL,
+  id_semester INT(4) UNSIGNED NOT NULL,
+  FOREIGN KEY (id_subject) REFERENCES subjects(id),
+  FOREIGN KEY (id_semester) REFERENCES semesters(id),
+  UNIQUE(id_subject, id_semester)
+) engine=InnoDB;
+
+CREATE TABLE IF NOT EXISTS users (
+  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(30),
+  email VARCHAR(30),
+  password VARCHAR(30),
+  type VARCHAR(30),
+  index(email)
+) engine=InnoDB;
+
+

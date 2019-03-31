@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: org.springframework.samples.petclinic.vet.VetTests
+Test set: org.nati.grade.domain.VetTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.17 s - in org.springframework.samples.petclinic.vet.VetTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.17 s - in org.nati.grade.domain.VetTests

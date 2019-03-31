@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="org.springframework.samples.petclinic.vet.VetControllerTests" time="14.943" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="org.nati.grade.domain.VetControllerTests" time="14.943" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="gnome"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -59,6 +59,6 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="testShowVetListHtml" classname="org.springframework.samples.petclinic.vet.VetControllerTests" time="2.061"/>
-  <testcase name="testShowResourcesVetList" classname="org.springframework.samples.petclinic.vet.VetControllerTests" time="0.285"/>
+  <testcase name="testShowVetListHtml" classname="org.nati.grade.domain.VetControllerTests" time="2.061"/>
+  <testcase name="testShowResourcesVetList" classname="org.nati.grade.domain.VetControllerTests" time="0.285"/>
 </testsuite>
