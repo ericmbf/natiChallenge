@@ -15,103 +15,84 @@
  */
 package org.nati.grade.controllers;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
-import java.util.Map;
 
-import javax.validation.Valid;
+import javax.management.relation.RelationNotFoundException;
 
 import org.nati.grade.domain.User;
-import org.nati.grade.repositories.UserRepository;
+import org.nati.grade.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.ResourceAccessException;
 
 /**
  * @author Eric Costa Hall
  */
 @Controller
+@RequestMapping(value = "/grade/users")
 class UserController {
 
-    private final UserRepository users;
+    @Autowired
+    public UserService userService;
 
-    public UserController(UserRepository clinicService) {
-        this.users = clinicService;
+    @CrossOrigin
+    @ResponseBody
+    @GetMapping("/")
+    public ResponseEntity<List<User>> showUserList() {
+        List<User> users = userService.getUsers();
+        return ResponseEntity.ok(users);
     }
 
-    @InitBinder
-    public void setAllowedFields(WebDataBinder dataBinder) {
-        dataBinder.setDisallowedFields("id");
+    @CrossOrigin
+    @ResponseBody
+    @RequestMapping(path = "/new", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        if (user.getPassword() == null) {
+            user.setPassword("12345678");
+        }
+        User newUser = userService.createUser(user);
+        return ResponseEntity.status(HttpStatus.OK).body(newUser);
+	}
+
+    @CrossOrigin
+	@ResponseBody
+    @GetMapping("/{userId}")
+    public ResponseEntity<User> getUserById(@PathVariable("userId") int userId) 
+        throws RelationNotFoundException{
+        User user = userService.findById(userId);
+        return ResponseEntity.ok(user); // return 200, with json body
     }
 
-    @GetMapping("/users")
-    public String showUserList(Map<String, Object> model) {
-        List<User> users = new ArrayList<>();
-        users.addAll(this.users.findAll());
-        model.put("users", users);
-        return "users/userList";
+    @CrossOrigin
+    @ResponseBody
+    @RequestMapping(path = "/{userId}/edit", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<User> initUpdateUserForm(@PathVariable("userId") int userId, 
+        @RequestBody User user) {
+        User editUser = userService.findById(userId);
+        editUser.setEmail(user.getEmail());
+        editUser.setName(user.getName());
+        editUser.setPassword(user.getPassword());
+        editUser.setType(user.getType());
+        return ResponseEntity.status(HttpStatus.OK).body(editUser);
     }
 
-    @GetMapping("/users/new")
-    public String initCreationForm(Map<String, Object> model) {
-        User user = new User();
-        model.put("user", user);
-        return "users/createUser";
+    @RequestMapping(path = "/{userId}/delete", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> processDeleteUserForm(@PathVariable("userId") int userId)
+            throws RelationNotFoundException {
+        User user = userService.findById(userId);
+        userService.delete(user);
+        return ResponseEntity.noContent().build();
     }
-
-    @PostMapping("/users/new")
-    public String processCreationForm(@Valid User user, BindingResult result) {
-        this.users.save(user);
-        // return "redirect:/users/" + user.getId();
-        return "redirect:/users/";
-    }
-
-    @GetMapping("/users/{userId}/edit")
-    public String initUpdateUserForm(@PathVariable("userId") int userId, Model model) {
-        User user = this.users.findById(userId);
-        model.addAttribute(user);
-        return "users/editUser";
-    }
-
-    @PostMapping("/users/{userId}/edit")
-    public String processUpdateUserForm(@Valid User user, @PathVariable("userId") int userId) {
-        user.setId(userId);
-        this.users.save(user);
-        return "redirect:/users/";
-    }
-
-    @GetMapping("/users/{userId}/delete")
-    public String initDeleteUser(@PathVariable("userId") int userId, Model model) {
-        User user = this.users.findById(userId);
-        model.addAttribute(user);
-        return "users/deleteUser";
-    }
-
-    @PostMapping("/users/{userId}/delete")
-    public String processDeleteUserForm(@PathVariable("userId") int userId) {
-        User user = this.users.findById(userId);
-        this.users.delete(user);
-        return "redirect:/users/";
-    }
-
-    /**
-     * Custom handler for displaying an user.
-     *
-     * @param userId the ID of the user to display
-     * @return a ModelMap with the model attributes for the view
-     */
-    @GetMapping("/users/{userId}")
-    public ModelAndView showUser(@PathVariable("userId") int userId) {
-        ModelAndView mav = new ModelAndView("users/userDetails");
-        mav.addObject(this.users.findById(userId));
-        return mav;
-    }
-
 }

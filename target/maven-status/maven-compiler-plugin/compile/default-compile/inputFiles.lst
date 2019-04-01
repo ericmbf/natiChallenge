@@ -1,9 +1,9 @@
 /home/eric/workspaces/workspaceWeb/nati/springbootGettingStarted/natiChallenge/src/main/java/org/nati/grade/controllers/VetController.java
 /home/eric/workspaces/workspaceWeb/nati/springbootGettingStarted/natiChallenge/src/main/java/org/nati/grade/controllers/WelcomeController.java
-/home/eric/workspaces/workspaceWeb/nati/springbootGettingStarted/natiChallenge/src/main/java/org/nati/grade/service/PetTypeFormatter.java
 /home/eric/workspaces/workspaceWeb/nati/springbootGettingStarted/natiChallenge/src/main/java/org/nati/grade/domain/Person.java
 /home/eric/workspaces/workspaceWeb/nati/springbootGettingStarted/natiChallenge/src/main/java/org/nati/grade/controllers/CrashController.java
 /home/eric/workspaces/workspaceWeb/nati/springbootGettingStarted/natiChallenge/src/main/java/org/nati/grade/domain/Specialty.java
+/home/eric/workspaces/workspaceWeb/nati/springbootGettingStarted/natiChallenge/src/main/java/org/nati/grade/services/UserService.java
 /home/eric/workspaces/workspaceWeb/nati/springbootGettingStarted/natiChallenge/src/main/java/org/nati/grade/domain/User.java
 /home/eric/workspaces/workspaceWeb/nati/springbootGettingStarted/natiChallenge/src/main/java/org/nati/grade/repositories/VisitRepository.java
 /home/eric/workspaces/workspaceWeb/nati/springbootGettingStarted/natiChallenge/src/main/java/org/nati/grade/domain/PetType.java
