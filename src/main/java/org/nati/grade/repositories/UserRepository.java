@@ -18,6 +18,7 @@ package org.nati.grade.repositories;
 import java.util.Collection;
 import java.util.List;
 
+import org.hibernate.sql.Delete;
 import org.nati.grade.domain.User;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Query;
@@ -38,7 +39,7 @@ import org.springframework.transaction.annotation.Transactional;
 public interface UserRepository extends Repository<User, Integer> {
 
     /**
-     * Retrieve {@link User}s from the data store by email, returning all owners
+     * Retrieve {@link User}s from the data store by email, returning all users
      * whose last name <i>starts</i> with the given name.
      * @param email Value to search for
      * @return a Collection of matching {@link User}s (or an empty Collection if none
@@ -53,15 +54,19 @@ public interface UserRepository extends Repository<User, Integer> {
      * @param id the id to search for
      * @return the {@link User} if found
      */
-    // @Query("SELECT owner FROM Owner owner left join fetch owner.pets WHERE owner.id =:id")
+    // @Query("SELECT user FROM Owner user left join fetch user.pets WHERE user.id =:id")
     @Transactional(readOnly = true)
     User findById(@Param("id") Integer id);
 
     /**
      * Save an {@link User} to the data store, either inserting or updating it.
-     * @param owner the {@link User} to save
+     * @param user the {@link User} to save
      */
-    void save(User owner);
+    void save(User user);
 
-
+    /**
+     * Delete an {@link User} from data store.
+     * @param user the {@link User} to delete.
+     */
+    void delete(User user);
 }

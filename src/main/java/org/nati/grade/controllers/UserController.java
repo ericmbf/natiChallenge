@@ -77,50 +77,29 @@ class UserController {
     public String initUpdateUserForm(@PathVariable("userId") int userId, Model model) {
         User user = this.users.findById(userId);
         model.addAttribute(user);
-        return VIEWS_USER_CREATE_OR_UPDATE_FORM;
+        return "users/editUser";
     }
 
     @PostMapping("/users/{userId}/edit")
-    public String processUpdateUserForm(@Valid User user, BindingResult result, @PathVariable("userId") int userId) {
-        if (result.hasErrors()) {
-            return VIEWS_USER_CREATE_OR_UPDATE_FORM;
-        } else {
-            user.setId(userId);
-            this.users.save(user);
-            return "redirect:/users/{userId}";
-        }
+    public String processUpdateUserForm(@Valid User user, @PathVariable("userId") int userId) {
+        user.setId(userId);
+        this.users.save(user);
+        return "redirect:/users/";
     }
 
-    @GetMapping("/users/find")
-    public String initFindForm(Map<String, Object> model) {
-        model.put("user", new User());
-        return "users/findUsers";
+    @GetMapping("/users/{userId}/delete")
+    public String initDeleteUser(@PathVariable("userId") int userId, Model model) {
+        User user = this.users.findById(userId);
+        model.addAttribute(user);
+        return "users/deleteUser";
     }
 
-    // @GetMapping("/usersprocessFindForm")
-    // public String processFindForm(User user, BindingResult result, Map<String, Object> model) {
-
-    //     // // allow parameterless GET request for /users to return all records
-    //     // if (user.getEmail() == null) {
-    //     //     user.setEmail(""); // empty string signifies broadest possible search
-    //     // }
-
-    //     // // find users by email
-    //     // // Collection<User> results = this.users.findByEmail(user.getEmail());
-    //     // if (results.isEmpty()) {
-    //     //     // no users found
-    //     //     result.rejectValue("lastName", "notFound", "not found");
-    //     //     return "users/findUsers";
-    //     // } else if (results.size() == 1) {
-    //     //     // 1 user found
-    //     //     user = results.iterator().next();
-    //     //     return "redirect:/users/" + user.getId();
-    //     // } else {
-    //     //     // multiple users found
-    //     //     model.put("selections", results);
-    //     //     return "users/usersList";
-    //     // }
-    // }
+    @PostMapping("/users/{userId}/delete")
+    public String processDeleteUserForm(@PathVariable("userId") int userId) {
+        User user = this.users.findById(userId);
+        this.users.delete(user);
+        return "redirect:/users/";
+    }
 
     /**
      * Custom handler for displaying an user.

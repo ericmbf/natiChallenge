@@ -20,8 +20,15 @@
               <td th:text="${user.email}"/>
               <td th:text="${user.type}"/>
           </tr>
+
         </tbody>
     </table>
+
+    <div class="text-center">
+      <form action="/users/new">
+        <input class="btn btn-default" type="submit" value="New User" />
+      </form>
+    </div>
 
     <script>
         function rowClicked(value) {

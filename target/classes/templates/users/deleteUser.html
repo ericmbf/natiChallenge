@@ -1,0 +1,22 @@
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'users')}">
+
+<body>
+    <h2>Delete User</h2>
+    <p>Are you sure you want to delete <b><span th:text="${user.name}" /></b>?</p>
+    <form th:object="${user}" class="form-horizontal" id="add-user-form" method="post">
+        <div class="form-group">
+            <div class="text-center">
+                <button class="btn btn-default" type="submit">
+                    Delete
+                </button>
+                <a th:href="@{/users/{id}/edit(id=${user.id})}">
+                    <button class="btn btn-default" type="button">
+                        Cancel
+                    </button>
+                </a>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
