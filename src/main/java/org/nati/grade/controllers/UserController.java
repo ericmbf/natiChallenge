@@ -93,4 +93,17 @@ class UserController {
         userService.delete(user);
         return ResponseEntity.noContent().build();
     }
+
+    @CrossOrigin
+	@ResponseBody
+	@RequestMapping(path = "/login", method = RequestMethod.POST)
+	public ResponseEntity<User> login(@RequestBody User user) {
+		if (userService.checkCredentials(user)) {
+            User userData = userService.findById(user.getId());    
+            return ResponseEntity.status(HttpStatus.OK).body(userData);
+        }
+		else {
+			return ResponseEntity.notFound().build();
+		}
+	}
 }

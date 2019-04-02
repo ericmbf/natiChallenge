@@ -1,14 +1,34 @@
 version: '3.4'
 services:
   mysql:
+    container_name: mysql
+    hostname: mysql
     image: mysql:5.7
     ports:
       - "3306:3306"
+    networks:
+      - net-backend
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=nati
     volumes:
-      - "./conf.d:/etc/mysql/conf.d:ro"
       - storage:/var/lib/mysql
+  rest:
+    container_name: nati-rest
+    hostname: nati-rest
+    restart: always
+    depends_on:
+      - mysql
+    networks:
+      - net-backend
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: nati/grade:1.0.0
+    ports:
+      - "8080:8080"
+
 volumes:
   storage:
+networks:
+  net-backend:

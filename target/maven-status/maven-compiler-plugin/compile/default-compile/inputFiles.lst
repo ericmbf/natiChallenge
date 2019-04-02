@@ -1,7 +1,6 @@
 /home/eric/workspaces/workspaceWeb/nati/springbootGettingStarted/natiChallenge/src/main/java/org/nati/grade/controllers/WelcomeController.java
 /home/eric/workspaces/workspaceWeb/nati/springbootGettingStarted/natiChallenge/src/main/java/org/nati/grade/domain/Semester.java
 /home/eric/workspaces/workspaceWeb/nati/springbootGettingStarted/natiChallenge/src/main/java/org/nati/grade/services/SemesterService.java
-/home/eric/workspaces/workspaceWeb/nati/springbootGettingStarted/natiChallenge/src/main/java/org/nati/grade/controllers/CrashController.java
 /home/eric/workspaces/workspaceWeb/nati/springbootGettingStarted/natiChallenge/src/main/java/org/nati/grade/domain/Subject.java
 /home/eric/workspaces/workspaceWeb/nati/springbootGettingStarted/natiChallenge/src/main/java/org/nati/grade/repositories/CourseRepository.java
 /home/eric/workspaces/workspaceWeb/nati/springbootGettingStarted/natiChallenge/src/main/java/org/nati/grade/services/UserService.java

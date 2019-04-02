@@ -12,10 +12,10 @@
         },
         {
             "type": "java",
-            "name": "Debug (Launch)-CourseCurriculumApplication<spring-petclinic>",
+            "name": "Debug (Launch)-CourseCurriculumApplication<spring-nati>",
             "request": "launch",
             "mainClass": "org.nati.grade.CourseCurriculumApplication",
-            "projectName": "spring-petclinic"
+            "projectName": "spring-nati"
         }
     ]
 }

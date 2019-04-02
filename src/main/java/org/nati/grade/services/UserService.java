@@ -30,4 +30,9 @@ public class UserService {
 	public void delete(User user) {
 		userRepository.delete(user);
 	}
+
+	public boolean checkCredentials(User userLogin) {
+		User userDb = userRepository.findById(userLogin.getId());
+		return userDb.equals(userLogin);
+	}
 }
