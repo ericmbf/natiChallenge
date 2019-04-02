@@ -17,6 +17,7 @@ package org.nati.grade.repositories;
 
 import java.util.Collection;
 
+import org.nati.grade.domain.Course;
 import org.nati.grade.domain.Semester;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Query;
@@ -40,6 +41,14 @@ public interface SemesterRepository extends Repository<Semester, Integer> {
      */
     @Transactional(readOnly = true)
     Collection<Semester> findAll() throws DataAccessException;
+
+    /**
+     * Retrieve {@link Semester}s from the data store, returning all semesters
+     * @return a Collection of matching {@link Semester}s (or an empty Collection if none
+     * found)
+     */
+    @Transactional(readOnly = true)
+    Collection<Semester> findByCourse(Course course);
 
     /**
      * Retrieve an {@link Semester} from the data store by id.

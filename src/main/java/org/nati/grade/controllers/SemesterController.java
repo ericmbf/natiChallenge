@@ -55,8 +55,15 @@ class SemesterController {
     public ResponseEntity<List<Semester>> showSemesterList(
         @PathVariable Integer courseId) {
         Course course = courseService.findById(courseId);
-        List<Semester> semesters = semesterService.getSemesters();
+        List<Semester> semesters = semesterService.findByCourse(course);
         return ResponseEntity.ok(semesters);
+    }
+
+    @GetMapping("/semesters/{id}")
+    public ResponseEntity<Semester> showSemester(
+        @PathVariable("id") Integer id) {
+        Semester semester = semesterService.findById(id);
+        return ResponseEntity.ok(semester);
     }
 
     @CrossOrigin
@@ -72,15 +79,6 @@ class SemesterController {
         newSemester = semesterService.createSemester(newSemester);
         return ResponseEntity.status(HttpStatus.OK).body(newSemester);
 	}
-
-    @CrossOrigin
-	@ResponseBody
-    @GetMapping("/{semesterId}")
-    public ResponseEntity<Semester> getSemesterById(@PathVariable("semesterId") int semesterId) 
-        throws RelationNotFoundException{
-        Semester semester = semesterService.findById(semesterId);
-        return ResponseEntity.ok(semester);
-    }
 
     @CrossOrigin
     @ResponseBody

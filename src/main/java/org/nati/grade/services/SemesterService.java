@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.nati.grade.domain.Course;
 import org.nati.grade.domain.Semester;
 import org.nati.grade.repositories.SemesterRepository;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,14 @@ public class SemesterService {
 	}
 
 	public List<Semester> getSemesters() {
-		List<Semester> semesters = (List<Semester>) semesterRepository.findAll();
+		List<Semester> semesters = 
+			(List<Semester>) semesterRepository.findAll();
+		return semesters;
+	}
+
+	public List<Semester> findByCourse(Course course) {
+		List<Semester> semesters = 
+			(List<Semester>) semesterRepository.findByCourse(course);
 		return semesters;
 	}
 
