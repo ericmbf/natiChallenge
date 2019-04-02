@@ -85,6 +85,7 @@ class UserController {
         editUser.setName(user.getName());
         editUser.setPassword(user.getPassword());
         editUser.setType(user.getType());
+        userService.createUser(editUser);
         return ResponseEntity.status(HttpStatus.OK).body(editUser);
     }
 
