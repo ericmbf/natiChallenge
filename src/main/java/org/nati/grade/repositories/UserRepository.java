@@ -16,9 +16,6 @@
 package org.nati.grade.repositories;
 
 import java.util.Collection;
-import java.util.List;
-
-import org.hibernate.sql.Delete;
 import org.nati.grade.domain.User;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Query;
@@ -31,17 +28,12 @@ import org.springframework.transaction.annotation.Transactional;
  * conventions so this interface can easily be extended for Spring Data.
  * See: https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.query-creation
  *
- * @author Ken Krebs
  * @author Eric Costa Hall
- * @author Sam Brannen
- * @author Michael Isvy
  */
 public interface UserRepository extends Repository<User, Integer> {
 
     /**
-     * Retrieve {@link User}s from the data store by email, returning all users
-     * whose last name <i>starts</i> with the given name.
-     * @param email Value to search for
+     * Retrieve {@link User}s from the data store, returning all users
      * @return a Collection of matching {@link User}s (or an empty Collection if none
      * found)
      */

@@ -15,8 +15,6 @@
  */
 package org.nati.grade.controllers;
 
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.List;
 
 import javax.management.relation.RelationNotFoundException;
@@ -35,7 +33,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.client.ResourceAccessException;
 
 /**
  * @author Eric Costa Hall
